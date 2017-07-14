@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="RecycleViewAdapter"
+    minApi="9"
+    minBuildApi="14"
+    description="Creates a new RecycleViewAdapter">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="adapterTagName"
+        name="Adapter Tag name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Main"
+        help="The name of the recycleViewAdapter tag to create" />
+
+        <parameter
+            id="adapterName"
+            name="Adapter Name"
+            type="string"
+            constraints="class|unique|nonempty"
+            suggest="${adapterTagName}Adapter"
+            default="MainAdapter"
+            help="The name of the Adapter class name to create" />
+
+        <parameter
+            id="entityClass"
+            name="entityClass"
+            type="string"
+            constraints="class|nonempty"
+            default=""
+            help="The adapter's entity" />
+
+        <parameter
+            id="isClickable"
+            name="clickableItem?"
+            type="boolean"
+            default="true"
+            help="set Clickable Event" />
+
+        <parameter
+            id="adapterLayoutName"
+            name="Adapter Layout Name"
+            type="string"
+            constraints="layout|unique|nonempty"
+            suggest="${activityToLayout(adapterTagName, 'adapter')}"
+            default="adapter_main"
+            help="The name of the layout to create for the adapter"/>
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
